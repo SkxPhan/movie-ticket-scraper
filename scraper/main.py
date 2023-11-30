@@ -53,13 +53,14 @@ def main():
     ) = read_config()
 
     driver = web_scraping.get_driver(headless=False)
-    driver.get(movie)
+    driver.get(movie)  # Should raise an error if bad inputs
 
     web_scraping.dismiss_cookie_popup(driver)
 
     cinema_dropdown = web_scraping.get_cinema_dropdown(driver)
     dates_dropdown = web_scraping.get_dates_dropdown(driver)
 
+    # Should raise an error if bad inputs
     web_scraping.select_dropdown_option(cinema_dropdown, expected_cinema)
     web_scraping.select_dropdown_option(dates_dropdown, expected_date)
 
